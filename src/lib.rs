@@ -23,7 +23,7 @@ pub fn is_vertex(input: proc_macro::TokenStream) -> proc_macro::TokenStream {
     let expanded = quote! {
         use typedgl::gl_obj::VertexElementType;
         impl IsVertex for #name {
-            fn element_size(&self, index: usize) -> gl::types::GLint {
+            fn element_size(&self, index: usize) -> i32 {
                 #size_fn
             }
 
@@ -31,7 +31,7 @@ pub fn is_vertex(input: proc_macro::TokenStream) -> proc_macro::TokenStream {
                 #type_fn
             }
 
-            fn element_stride(&self) -> gl::types::GLsizei {
+            fn element_stride(&self) -> i32 {
                 std::mem::size_of_val(self) as i32
             }
 
